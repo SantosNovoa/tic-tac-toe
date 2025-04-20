@@ -64,13 +64,13 @@ const Gameboard = {
     if (
       this.gameboard[0][0] === playerOne.marker &&
       this.gameboard[1][1] === playerOne.marker &&
-      this.gameboard[1][1] === playerOne.marker
+      this.gameboard[2][2] === playerOne.marker
     ) {
       console.log(`${playerOne.name} won by diagonal.`);
     } else if (
       this.gameboard[0][0] === playerTwo.marker &&
       this.gameboard[1][1] === playerTwo.marker &&
-      this.gameboard[1][1] === playerTwo.marker
+      this.gameboard[2][2] === playerTwo.marker
     ) {
       console.log(`${playerTwo.name} won by diagonal.`);
     }
