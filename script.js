@@ -1,4 +1,4 @@
-console.log("hello world");
+
 
 const Gameboard = {
   gameboard: [
@@ -72,16 +72,28 @@ const Gameboard = {
       console.log(`${playerTwo.name} won by diagonal.`);
     }
   },
+  turn: 1,
+  determineTurn: function(row, col) {
+    if (Gameboard.turn === 1) {
+      this.placeMarker(row, col, playerOne);
+      Gameboard.turn = 2
+    }  else if (Gameboard.turn === 2) {
+      this.placeMarker(row, col, playerTwo);
+      Gameboard.turn = 1;
+    }
+  }
 };
 
 const playerOne = {
-  name: "Player one",
+  name: "Player 1",
   marker: "X",
+  winner: true
 };
 
 const playerTwo = {
-  name: "Player two",
+  name: "Player 2",
   marker: "O",
+  winner: true
 };
 
 // Gameboard.placeMarkerPlayerTwo(1, 0);
@@ -89,9 +101,3 @@ const playerTwo = {
 // Gameboard.placeMarkerPlayerTwo(2, 2);
 // Gameboard.placeMarkerPlayerTwo(1, 2);
 
-Gameboard.placeMarker(0, 1, playerOne);
-Gameboard.placeMarker(0, 2, playerTwo);
-Gameboard.placeMarker(1, 1, playerTwo);
-Gameboard.placeMarker(2, 0, playerTwo);
-
-Gameboard.determineWinner();
