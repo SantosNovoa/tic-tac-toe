@@ -1,5 +1,3 @@
-
-
 const Gameboard = {
   gameboard: [
     ["-", "-", "-"],
@@ -73,31 +71,42 @@ const Gameboard = {
     }
   },
   turn: 1,
-  determineTurn: function(row, col) {
+  determineTurn: function (row, col) {
     if (Gameboard.turn === 1) {
       this.placeMarker(row, col, playerOne);
-      Gameboard.turn = 2
-    }  else if (Gameboard.turn === 2) {
+      this.determineWinner();
+      Gameboard.turn = 2;
+    } else if (Gameboard.turn === 2) {
       this.placeMarker(row, col, playerTwo);
+      this.determineWinner();
       Gameboard.turn = 1;
     }
-  }
+  },
+  resetBoard: function () {
+    this.gameboard = [
+      ["-", "-", "-"],
+      ["-", "-", "-"],
+      ["-", "-", "-"],
+    ];
+    this.turn = 1;
+    console.log("\nBoard reset.");
+    this.displayGameboard();
+  },
 };
 
 const playerOne = {
   name: "Player 1",
   marker: "X",
-  winner: true
+  winner: true,
 };
 
 const playerTwo = {
   name: "Player 2",
   marker: "O",
-  winner: true
+  winner: true,
 };
 
 // Gameboard.placeMarkerPlayerTwo(1, 0);
 // Gameboard.placeMarkerPlayerTwo(1, 1);
 // Gameboard.placeMarkerPlayerTwo(2, 2);
 // Gameboard.placeMarkerPlayerTwo(1, 2);
-
