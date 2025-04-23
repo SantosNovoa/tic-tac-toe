@@ -12,8 +12,26 @@ body {
   padding: 20px;
   background-color: #161b22;
 }
+
+.status-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.status {
+  border-radius: 10px;
+  width: 700px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: white;
+}
+
 .container {
-  margin-top: 240px;
+  margin-top: 140px;
   display: flex;
   justify-content: center;
 }
@@ -21,7 +39,7 @@ body {
 .gameboard {
   width: 300px;
   height: 300px;
-  border: 20px solid #DBDBDB;
+  border: 20px solid #dbdbdb;
   border-radius: 10px;
 }
 
@@ -33,11 +51,13 @@ body {
   height: 100%;
   width: 33.3%;
   float: left;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 70px;
   cursor: pointer;
   background-color: #3275c6;
-  color: #DBDBDB;
+  color: #dbdbdb;
 }
 
 .footer {
@@ -50,8 +70,7 @@ body {
   padding: 20px;
 }
 
-#square-2 {
-    background-color: #488FF7;
-    color: #FFFFFF;
+.col.square-2 {
+  background-color: #488ff7;
+  color: #ffffff;
 }
-
