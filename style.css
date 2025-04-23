@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-  background-color: #2b2b2b;
+  background-color: #212327;
   margin: 0;
   font-family: "Robot", sans-serif;
   color: white;
@@ -73,4 +73,27 @@ body {
 .col.square-2 {
   background-color: #488ff7;
   color: #ffffff;
+}
+
+.reset-button {
+  background-color: #212327;
+  border: 1px solid rgba(255, 255, 255, 0.226);
+  border-radius: 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #37383b;
+}
+
+.btn-container {
+    margin: 40px;
+  display: flex;
+  justify-content: center;
 }
