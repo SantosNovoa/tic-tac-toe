@@ -155,13 +155,11 @@ const Gameboard = {
 const playerOne = {
   name: "Player 1",
   marker: "X",
-  winner: true,
 };
 
 const playerTwo = {
   name: "Player 2",
   marker: "O",
-  winner: true,
 };
 
 // Gameboard.placeMarkerPlayerTwo(1, 0);
