@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAA1CAYAAADh5qNwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEiklEQVR4nO2aW09TSxTH/QL6dvR7qA8afTWpmngSEA1eOFUx4dCI+OAF9MFEDQmGNHi4U7BKhXCOUvEWNRDvrVIVgwJ2BhQBaSuJl4fCJtqskzWb1n2vU1rtrt3JymSmm5n57fVfs9lrZtGi3+UaHR1dRindSggpJYQcTkMrpZRuGRkZWRoXhhCyhFLaQgj5RimFdDciztMxPDy82Ajoxa+eaILWrwmGHkqDyS3Ea82qGDKL5Kg+1DdZjGHQad3YN/AGKi5PQ6nrE+xvi2/l7ZOQX+XjtmOdoR/qv9T1ic0H56UDlxeD8vv9JVpAOTVhsNhnf9gK6t/D8oMebtvt+Mg1Tk5NWBMMOaSLxAHlDfhEeAb6mVAW+yxUuD9oSfCAIdS+859jHWyuEyC/UVB1nN8kQG6dMdTGk0+gtnsAuu4OsnLDiSeGUNgf9qsaq1Fg84jWS9o+80PZzn2JdbDHKQAJRaCg5Xunf7WIbbtaBV2oLaf74PrDIdhW5YPVZR5WYj2vsk8XytoqAAlGWP+xfh0C+IMRNo9oG85vQVBoxS4BaCgC1haBDfI6EIG/2+RPVAnVfX8I1h1/LGvDeve9IUP57T0n9o8PbKdDfHj72udk9yQFSgSbYwOgKYGUUKvKvOC+O6gZQ9i+usxrGFNFbaLH0EPFLjlQUqHQS+gtpRS1oFYe8sC1h3KPRA3b8XcjKFRD9AFaNcZKCpRUclIpGsmv8epLKKp7Jmsrqn0KDVcGDOUXlVxJ+xyToj8oj92kQO1oFlSSY1IMRmC7ZKVSQq096oXO3kEGV+7sZyXW1xz16kJtaxIhbBfmVFLc0ZzEhWJ7swCFkpVHGtA4CaMlfcUhD+RV+mB/03NWYt1oScf+sF/lWHucAptH0mMqnV6+tiwUFT11xDUJ1no+K3a8ha32IW6ztY5zj3XENckvP3z788oIJ8grI7TcyufcY+VX+bJQkApPbToTzgxPrbfPwin3NPT6xuCad4KVJ7umWbtpoU65p+FsTwA2Vs+wOpZYRzDTQvX4xmJAUcM6tpsSatOZMJOcVgxh+5+SGDMNlCUTPWWxz7LYcfbKY8rZMwUnLpk4ptbPg4mr3zgrEcjUq58lE99Tluy/SZ7Ue6q8IwSFjo9cZmudgJzKZ9xW4gxwj1XeEcp+JEL2y9eu/zm/t+GVKieBdWw3bY7inxvvoOtxMAaG5X/eINTefGcIpUxgFp1PQTYpUSi06utjcLkvBCsPe6HzUQAabo+r7tHL+2GqOZqCtiY777cQKLT6W+PwNjQDjbcnNH/XzdAGI8ysqcrQJgqFkrvoDcLT0S8yKcaDYglMTDunOpdu4YRCgH89ATh7Z1IuRQWY1q5HNNWc8l0PCyfUhftTKsmhFDseTMXdn5JKrmBeigven5LuJCYKlXO6XzOGlO0/bSexwux7vn6d3fncNN2dz60Jg+9lnN15vXMU+If4RNLqHIX7gybQvKc2Z9SJF0rpV0LIHzGoeW850mBiCRshpEkGlLGnyCRgDhNJ8St6SBdIeuFpLDy8lOYnM/NUMZTJ1/+JauCavFKe4gAAAABJRU5ErkJggg==" alt="external-Tic-Tac-Toe-gaming-vectorslab-flat-vectorslab-2" type="image/x-icon">
-</head>
-<body>
-    
-</body>
-<script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAA1CAYAAADh5qNwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEiklEQVR4nO2aW09TSxTH/QL6dvR7qA8afTWpmngSEA1eOFUx4dCI+OAF9MFEDQmGNHi4U7BKhXCOUvEWNRDvrVIVgwJ2BhQBaSuJl4fCJtqskzWb1n2vU1rtrt3JymSmm5n57fVfs9lrZtGi3+UaHR1dRindSggpJYQcTkMrpZRuGRkZWRoXhhCyhFLaQgj5RimFdDciztMxPDy82Ajoxa+eaILWrwmGHkqDyS3Ea82qGDKL5Kg+1DdZjGHQad3YN/AGKi5PQ6nrE+xvi2/l7ZOQX+XjtmOdoR/qv9T1ic0H56UDlxeD8vv9JVpAOTVhsNhnf9gK6t/D8oMebtvt+Mg1Tk5NWBMMOaSLxAHlDfhEeAb6mVAW+yxUuD9oSfCAIdS+859jHWyuEyC/UVB1nN8kQG6dMdTGk0+gtnsAuu4OsnLDiSeGUNgf9qsaq1Fg84jWS9o+80PZzn2JdbDHKQAJRaCg5Xunf7WIbbtaBV2oLaf74PrDIdhW5YPVZR5WYj2vsk8XytoqAAlGWP+xfh0C+IMRNo9oG85vQVBoxS4BaCgC1haBDfI6EIG/2+RPVAnVfX8I1h1/LGvDeve9IUP57T0n9o8PbKdDfHj72udk9yQFSgSbYwOgKYGUUKvKvOC+O6gZQ9i+usxrGFNFbaLH0EPFLjlQUqHQS+gtpRS1oFYe8sC1h3KPRA3b8XcjKFRD9AFaNcZKCpRUclIpGsmv8epLKKp7Jmsrqn0KDVcGDOUXlVxJ+xyToj8oj92kQO1oFlSSY1IMRmC7ZKVSQq096oXO3kEGV+7sZyXW1xz16kJtaxIhbBfmVFLc0ZzEhWJ7swCFkpVHGtA4CaMlfcUhD+RV+mB/03NWYt1oScf+sF/lWHucAptH0mMqnV6+tiwUFT11xDUJ1no+K3a8ha32IW6ztY5zj3XENckvP3z788oIJ8grI7TcyufcY+VX+bJQkApPbToTzgxPrbfPwin3NPT6xuCad4KVJ7umWbtpoU65p+FsTwA2Vs+wOpZYRzDTQvX4xmJAUcM6tpsSatOZMJOcVgxh+5+SGDMNlCUTPWWxz7LYcfbKY8rZMwUnLpk4ptbPg4mr3zgrEcjUq58lE99Tluy/SZ7Ue6q8IwSFjo9cZmudgJzKZ9xW4gxwj1XeEcp+JEL2y9eu/zm/t+GVKieBdWw3bY7inxvvoOtxMAaG5X/eINTefGcIpUxgFp1PQTYpUSi06utjcLkvBCsPe6HzUQAabo+r7tHL+2GqOZqCtiY777cQKLT6W+PwNjQDjbcnNH/XzdAGI8ysqcrQJgqFkrvoDcLT0S8yKcaDYglMTDunOpdu4YRCgH89ATh7Z1IuRQWY1q5HNNWc8l0PCyfUhftTKsmhFDseTMXdn5JKrmBeigven5LuJCYKlXO6XzOGlO0/bSexwux7vn6d3fncNN2dz60Jg+9lnN15vXMU+If4RNLqHIX7gybQvKc2Z9SJF0rpV0LIHzGoeW850mBiCRshpEkGlLGnyCRgDhNJ8St6SBdIeuFpLDy8lOYnM/NUMZTJ1/+JauCavFKe4gAAAABJRU5ErkJggg=="
+      alt="external-Tic-Tac-Toe-gaming-vectorslab-flat-vectorslab-2"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="header">Tic Tac Toe</div>
+    <div class="container">
+      <div class="gameboard">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col" id="square-2"></div>
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <div class="col" id="square-2"></div>
+          <div class="col"></div>
+          <div class="col" id="square-2"></div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col" id="square-2"></div>
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">Copyright © Santos Novoa 2025</div>
+  </body>
+  <script src="script.js"></script>
 </html>
