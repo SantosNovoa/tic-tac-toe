@@ -10,8 +10,12 @@ const Gameboard = {
     }
   },
   placeMarker: function (row, col, player) {
+
     if (this.gameboard[row][col] === "-") {
       this.gameboard[row][col] = player.marker;
+      const index = row * 3 + col;
+      const squares = document.querySelectorAll(".col");
+      squares[index].textContent = player.marker;
       console.log("\n");
       Gameboard.displayGameboard();
     } else {
