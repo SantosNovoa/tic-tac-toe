@@ -35,7 +35,8 @@ const Gameboard = {
         winner.textContent = `${playerOne.name} won.`;
         console.log(`${playerOne.name} won by row.`);
         winnerFound = true;
-        this.resetBoard();
+        this.gameOver = true;
+        setTimeout(() => this.resetBoard(), 1000);
       } else if (
         this.gameboard[i][0] === playerTwo.marker &&
         this.gameboard[i][1] === playerTwo.marker &&
@@ -45,7 +46,8 @@ const Gameboard = {
         winner.textContent = `${playerTwo.name} won.`;
         console.log(`${playerTwo.name} won by row.`);
         winnerFound = true;
-        this.resetBoard();
+        this.gameOver = true;
+        setTimeout(() => this.resetBoard(), 1000);
       }
       //checking column
       if (
@@ -57,7 +59,8 @@ const Gameboard = {
         winner.textContent = `${playerOne.name} won.`;
         console.log(`${playerOne.name} won by column.`);
         winnerFound = true;
-        this.resetBoard();
+        this.gameOver = true;
+        setTimeout(() => this.resetBoard(), 1000);
       } else if (
         this.gameboard[0][i] === playerTwo.marker &&
         this.gameboard[1][i] === playerTwo.marker &&
@@ -67,7 +70,8 @@ const Gameboard = {
         winner.textContent = `${playerTwo.name} won.`;
         console.log(`${playerTwo.name} won by column.`);
         winnerFound = true;
-        this.resetBoard();
+        this.gameOver = true;
+        setTimeout(() => this.resetBoard(), 1000);
       }
     }
     //checking diagonal
@@ -83,7 +87,8 @@ const Gameboard = {
       winner.textContent = `${playerOne.name} won.`;
       console.log(`${playerOne.name} won by diagonal.`);
       winnerFound = true;
-      this.resetBoard();
+      this.gameOver = true;
+      setTimeout(() => this.resetBoard(), 1000);
     } else if (
       (this.gameboard[0][0] === playerTwo.marker &&
         this.gameboard[1][1] === playerTwo.marker &&
@@ -96,25 +101,31 @@ const Gameboard = {
       winner.textContent = `${playerTwo.name} won by diagonal.`;
       console.log(`${playerTwo.name} won by diagonal.`);
       winnerFound = true;
-      this.resetBoard();
+      this.gameOver = true;
+      setTimeout(() => this.resetBoard(), 1000);
     }
     if (!winnerFound && this.isDraw()) {
-      this.resetBoard();
-      console.log("It's a draw");
+      const status = document.querySelector(".status");
+      status.textContent = "It's a draw!";
+      console.log("It's a draw!");
+      this.gameOver = true;
+      setTimeout(() => this.resetBoard(), 1000);
     }
   },
   turn: 1,
   determineTurn: function (row, col) {
-    if (Gameboard.turn === 1) {
+    if (this.gameOver) return;
+
+    if (this.turn === 1) {
       console.log("Player 1 turn");
       this.placeMarker(row, col, playerOne);
       this.determineWinner();
-      Gameboard.turn = 2;
-    } else if (Gameboard.turn === 2) {
+      this.turn = 2;
+    } else {
       console.log("Player 2 turn");
       this.placeMarker(row, col, playerTwo);
       this.determineWinner();
-      Gameboard.turn = 1;
+      this.turn = 1;
     }
   },
   resetBoard: function () {
@@ -123,9 +134,12 @@ const Gameboard = {
       ["-", "-", "-"],
       ["-", "-", "-"],
     ];
+    this.gameOver = false;
     this.turn = 1;
     console.log("\nBoard reset.");
     this.displayGameboard();
+    const squares = document.querySelectorAll(".col");
+    squares.forEach((square) => (square.textContent = ""));
   },
   isDraw: function () {
     for (let row of this.gameboard) {
@@ -135,6 +149,7 @@ const Gameboard = {
     }
     return true;
   },
+  gameOver: false,
 };
 
 const playerOne = {
