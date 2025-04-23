@@ -17,19 +17,19 @@
     <div class="container">
       <div class="gameboard">
         <div class="row">
-          <div class="col"></div>
-          <div class="col" id="square-2"></div>
-          <div class="col"></div>
+          <div class="col" onclick="Gameboard.determineTurn(0, 0)"></div>
+          <div class="col square-2"  onclick="Gameboard.determineTurn(0, 1, this)"></div>
+          <div class="col" onclick="Gameboard.determineTurn(0, 2)"></div>
         </div>
         <div class="row">
-          <div class="col" id="square-2"></div>
-          <div class="col"></div>
-          <div class="col" id="square-2"></div>
+          <div class="col square-2"  onclick="Gameboard.determineTurn(1, 0)"></div>
+          <div class="col" onclick="Gameboard.determineTurn(1, 1)"></div>
+          <div class="col square-2"  onclick="Gameboard.determineTurn(1, 2)"></div>
         </div>
         <div class="row">
-          <div class="col"></div>
-          <div class="col" id="square-2"></div>
-          <div class="col"></div>
+          <div class="col" onclick="Gameboard.determineTurn(2, 0)"></div>
+          <div class="col square-2"  onclick="Gameboard.determineTurn(2, 1)"></div>
+          <div class="col" onclick="Gameboard.determineTurn(2, 2)"></div>
         </div>
       </div>
     </div>
