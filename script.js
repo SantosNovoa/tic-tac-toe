@@ -10,7 +10,6 @@ const Gameboard = {
     }
   },
   placeMarker: function (row, col, player) {
-
     if (this.gameboard[row][col] === "-") {
       this.gameboard[row][col] = player.marker;
       const index = row * 3 + col;
@@ -25,7 +24,6 @@ const Gameboard = {
   determineWinner: function () {
     let winnerFound = false;
 
-
     for (let i = 0; i < 3; i++) {
       //checking row
       if (
@@ -33,17 +31,21 @@ const Gameboard = {
         this.gameboard[i][1] === playerOne.marker &&
         this.gameboard[i][2] === playerOne.marker
       ) {
+        const winner = document.querySelector(".status");
+        winner.textContent = `${playerOne.name} won.`;
         console.log(`${playerOne.name} won by row.`);
         winnerFound = true;
-        this.resetBoard()
+        this.resetBoard();
       } else if (
         this.gameboard[i][0] === playerTwo.marker &&
         this.gameboard[i][1] === playerTwo.marker &&
         this.gameboard[i][2] === playerTwo.marker
       ) {
+        const winner = document.querySelector(".status");
+        winner.textContent = `${playerTwo.name} won.`;
         console.log(`${playerTwo.name} won by row.`);
         winnerFound = true;
-        this.resetBoard()
+        this.resetBoard();
       }
       //checking column
       if (
@@ -51,17 +53,21 @@ const Gameboard = {
         this.gameboard[1][i] === playerOne.marker &&
         this.gameboard[2][i] === playerOne.marker
       ) {
+        const winner = document.querySelector(".status");
+        winner.textContent = `${playerOne.name} won.`;
         console.log(`${playerOne.name} won by column.`);
         winnerFound = true;
-        this.resetBoard()
+        this.resetBoard();
       } else if (
         this.gameboard[0][i] === playerTwo.marker &&
         this.gameboard[1][i] === playerTwo.marker &&
         this.gameboard[2][i] === playerTwo.marker
       ) {
+        const winner = document.querySelector(".status");
+        winner.textContent = `${playerTwo.name} won.`;
         console.log(`${playerTwo.name} won by column.`);
         winnerFound = true;
-        this.resetBoard()
+        this.resetBoard();
       }
     }
     //checking diagonal
@@ -73,9 +79,11 @@ const Gameboard = {
         this.gameboard[1][1] === playerOne.marker &&
         this.gameboard[2][0] === playerOne.marker)
     ) {
+      const winner = document.querySelector(".status");
+      winner.textContent = `${playerOne.name} won.`;
       console.log(`${playerOne.name} won by diagonal.`);
       winnerFound = true;
-      this.resetBoard()
+      this.resetBoard();
     } else if (
       (this.gameboard[0][0] === playerTwo.marker &&
         this.gameboard[1][1] === playerTwo.marker &&
@@ -84,22 +92,26 @@ const Gameboard = {
         this.gameboard[1][1] === playerTwo.marker &&
         this.gameboard[2][0] === playerTwo.marker)
     ) {
+      const winner = document.querySelector(".status");
+      winner.textContent = `${playerTwo.name} won by diagonal.`;
       console.log(`${playerTwo.name} won by diagonal.`);
       winnerFound = true;
-      this.resetBoard()
+      this.resetBoard();
     }
     if (!winnerFound && this.isDraw()) {
-      this.resetBoard()
-      console.log("It's a draw")
+      this.resetBoard();
+      console.log("It's a draw");
     }
   },
   turn: 1,
   determineTurn: function (row, col) {
     if (Gameboard.turn === 1) {
+      console.log("Player 1 turn");
       this.placeMarker(row, col, playerOne);
       this.determineWinner();
       Gameboard.turn = 2;
     } else if (Gameboard.turn === 2) {
+      console.log("Player 2 turn");
       this.placeMarker(row, col, playerTwo);
       this.determineWinner();
       Gameboard.turn = 1;
@@ -115,14 +127,14 @@ const Gameboard = {
     console.log("\nBoard reset.");
     this.displayGameboard();
   },
-  isDraw: function() {
+  isDraw: function () {
     for (let row of this.gameboard) {
       if (row.includes("-")) {
         return false;
       }
-    } 
+    }
     return true;
-  }
+  },
 };
 
 const playerOne = {
@@ -141,4 +153,3 @@ const playerTwo = {
 // Gameboard.placeMarkerPlayerTwo(1, 1);
 // Gameboard.placeMarkerPlayerTwo(2, 2);
 // Gameboard.placeMarkerPlayerTwo(1, 2);
-
