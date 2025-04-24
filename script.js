@@ -1,3 +1,32 @@
+
+// reset btn event listener 
+
+document.querySelector(".reset-button").addEventListener("click", () => {
+  const squares = document.querySelectorAll(".col");
+  const status = document.querySelector(".status");
+  squares.forEach((square) => {
+    square.textContent = "";
+
+    //when the reset btn is clicked, allow the squares on the grid to be clickable.
+    square.removeAttribute("style");
+  });
+  status.textContent = "";
+  Gameboard.resetBoard();
+});
+
+
+
+const playerOne = {
+  name: "Player 1",
+  marker: "X",
+};
+
+const playerTwo = {
+  name: "Player 2",
+  marker: "O",
+};
+
+
 const Gameboard = {
   gameboard: [
     ["-", "-", "-"],
@@ -5,6 +34,7 @@ const Gameboard = {
     ["-", "-", "-"],
   ],
   displayGameboard: function () {
+    //console gameboard display
     for (let i = 0; i < this.gameboard.length; i++) {
       console.log(this.gameboard[i].join("|"));
     }
@@ -12,104 +42,122 @@ const Gameboard = {
   placeMarker: function (row, col, player) {
     if (this.gameboard[row][col] === "-") {
       this.gameboard[row][col] = player.marker;
+      //turning the 2d array index into a single array index
       const index = row * 3 + col;
       const squares = document.querySelectorAll(".col");
+      //indexing by 1d array
       squares[index].textContent = player.marker;
       console.log("\n");
-      Gameboard.displayGameboard();
+      this.displayGameboard();
+      return true;
     } else {
       console.log("Error, spot filled.");
+      const status = document.querySelector(".status");
+      status.textContent = "That spot is already taken!";
+      return false;
     }
   },
   determineWinner: function () {
     let winnerFound = false;
 
+    //dom elements
+    const winner = document.querySelector(".status");
+    const squares = document.querySelectorAll(".col");
+
+
     for (let i = 0; i < 3; i++) {
       //checking row
       if (
-        this.gameboard[i][0] === playerOne.marker &&
-        this.gameboard[i][1] === playerOne.marker &&
-        this.gameboard[i][2] === playerOne.marker
+        this.gameboard[i][0] === this.players.one.marker &&
+        this.gameboard[i][1] === this.players.one.marker &&
+        this.gameboard[i][2] === this.players.one.marker
       ) {
-        const winner = document.querySelector(".status");
-        winner.textContent = `${playerOne.name} won.`;
-        console.log(`${playerOne.name} won by row.`);
+        winner.textContent = `${this.players.one.name} won.`;
+        console.log(`${this.players.one.name} won by row.`);
         winnerFound = true;
         this.gameOver = true;
-        setTimeout(() => this.resetBoard(), 1000);
+        //if a winner is found disable the user from clicking on the squares
+        squares.forEach((square) => (square.style.pointerEvents = 'none'));
+        this.resetBoard();
       } else if (
-        this.gameboard[i][0] === playerTwo.marker &&
-        this.gameboard[i][1] === playerTwo.marker &&
-        this.gameboard[i][2] === playerTwo.marker
+        this.gameboard[i][0] === this.players.two.marker &&
+        this.gameboard[i][1] === this.players.two.marker &&
+        this.gameboard[i][2] === this.players.two.marker
       ) {
-        const winner = document.querySelector(".status");
-        winner.textContent = `${playerTwo.name} won.`;
-        console.log(`${playerTwo.name} won by row.`);
+        winner.textContent = `${this.players.two.name} won.`;
+        console.log(`${this.players.two.name} won by row.`);
         winnerFound = true;
         this.gameOver = true;
-        setTimeout(() => this.resetBoard(), 1000);
+        //if a winner is found disable the user from clicking on the squares
+        squares.forEach((square) => (square.style.pointerEvents = 'none'));
+        this.resetBoard();
       }
       //checking column
       if (
-        this.gameboard[0][i] === playerOne.marker &&
-        this.gameboard[1][i] === playerOne.marker &&
-        this.gameboard[2][i] === playerOne.marker
+        this.gameboard[0][i] === this.players.one.marker &&
+        this.gameboard[1][i] === this.players.one.marker &&
+        this.gameboard[2][i] === this.players.one.marker
       ) {
-        const winner = document.querySelector(".status");
-        winner.textContent = `${playerOne.name} won.`;
-        console.log(`${playerOne.name} won by column.`);
+        winner.textContent = `${this.players.one.name} won.`;
+        console.log(`${this.players.one.name} won by column.`);
         winnerFound = true;
         this.gameOver = true;
-        setTimeout(() => this.resetBoard(), 1000);
+        //if a winner is found disable the user from clicking on the squares
+        squares.forEach((square) => (square.style.pointerEvents = 'none'));
+        this.resetBoard();
       } else if (
-        this.gameboard[0][i] === playerTwo.marker &&
-        this.gameboard[1][i] === playerTwo.marker &&
-        this.gameboard[2][i] === playerTwo.marker
+        this.gameboard[0][i] === this.players.two.marker &&
+        this.gameboard[1][i] === this.players.two.marker&&
+        this.gameboard[2][i] === this.players.two.marker
       ) {
-        const winner = document.querySelector(".status");
-        winner.textContent = `${playerTwo.name} won.`;
-        console.log(`${playerTwo.name} won by column.`);
+        winner.textContent = `${this.players.two.name} won.`;
+        console.log(`${this.players.two.name} won by column.`);
         winnerFound = true;
         this.gameOver = true;
-        setTimeout(() => this.resetBoard(), 1000);
+        //if a winner is found disable the user from clicking on the squares
+        squares.forEach((square) => (square.style.pointerEvents = 'none'));
+        this.resetBoard();
       }
     }
     //checking diagonal
     if (
-      (this.gameboard[0][0] === playerOne.marker &&
-        this.gameboard[1][1] === playerOne.marker &&
-        this.gameboard[2][2] === playerOne.marker) ||
-      (this.gameboard[0][2] === playerOne.marker &&
-        this.gameboard[1][1] === playerOne.marker &&
-        this.gameboard[2][0] === playerOne.marker)
+      (this.gameboard[0][0] === this.players.one.marker &&
+        this.gameboard[1][1] === this.players.one.marker &&
+        this.gameboard[2][2] === this.players.one.marker) ||
+      (this.gameboard[0][2] === this.players.one.marker &&
+        this.gameboard[1][1] === this.players.one.marker &&
+        this.gameboard[2][0] === this.players.one.marker)
     ) {
-      const winner = document.querySelector(".status");
-      winner.textContent = `${playerOne.name} won.`;
-      console.log(`${playerOne.name} won by diagonal.`);
+      winner.textContent = `${this.players.one.name} won.`;
+      console.log(`${this.players.one.name} won by diagonal.`);
       winnerFound = true;
       this.gameOver = true;
-      setTimeout(() => this.resetBoard(), 1000);
+      //if a winner is found disable the user from clicking on the squares
+      squares.forEach((square) => (square.style.pointerEvents = 'none'));
+      this.resetBoard();
     } else if (
-      (this.gameboard[0][0] === playerTwo.marker &&
-        this.gameboard[1][1] === playerTwo.marker &&
-        this.gameboard[2][2] === playerTwo.marker) ||
-      (this.gameboard[0][2] === playerTwo.marker &&
-        this.gameboard[1][1] === playerTwo.marker &&
-        this.gameboard[2][0] === playerTwo.marker)
+      (this.gameboard[0][0] === this.players.two.marker &&
+        this.gameboard[1][1] === this.players.two.marker &&
+        this.gameboard[2][2] === this.players.two.marker) ||
+      (this.gameboard[0][2] === this.players.two.marker &&
+        this.gameboard[1][1] === this.players.two.marker &&
+        this.gameboard[2][0] === this.players.two.marker)
     ) {
-      const winner = document.querySelector(".status");
-      winner.textContent = `${playerTwo.name} won by diagonal.`;
-      console.log(`${playerTwo.name} won by diagonal.`);
+      winner.textContent = `${this.players.two.name} won by diagonal.`;
+      console.log(`${this.players.two.name} won by diagonal.`);
       winnerFound = true;
       this.gameOver = true;
-      setTimeout(() => this.resetBoard(), 1000);
+      //if a winner is found disable the user from clicking on the squares
+      squares.forEach((square) => (square.style.pointerEvents = 'none'));
+      this.resetBoard();
     }
     if (!winnerFound && this.isDraw()) {
-      const status = document.querySelector(".status");
-      status.textContent = "It's a draw!";
+      winner.textContent = "It's a draw!";
       console.log("It's a draw!");
       this.gameOver = true;
-      setTimeout(() => this.resetBoard(), 1000);
+      //if a winner is found disable the user from clicking on the squares
+      squares.forEach((square) => (square.style.pointerEvents = 'none'));
+      this.resetBoard();
     }
   },
   turn: 1,
@@ -118,14 +166,18 @@ const Gameboard = {
 
     if (this.turn === 1) {
       console.log("Player 1 turn");
-      this.placeMarker(row, col, playerOne);
-      this.determineWinner();
-      this.turn = 2;
+      const placed = this.placeMarker(row, col, this.players.one);
+      if (placed) {
+        this.determineWinner();
+        this.turn = 2;
+      }
     } else {
+      const placed = this.placeMarker(row, col, this.players.two);
       console.log("Player 2 turn");
-      this.placeMarker(row, col, playerTwo);
-      this.determineWinner();
-      this.turn = 1;
+      if (placed) {
+        this.determineWinner();
+        this.turn = 1;
+      }
     }
   },
   resetBoard: function () {
@@ -138,8 +190,7 @@ const Gameboard = {
     this.turn = 1;
     console.log("\nBoard reset.");
     this.displayGameboard();
-    const squares = document.querySelectorAll(".col");
-    squares.forEach((square) => (square.textContent = ""));
+    // squares.forEach((square) => (square.textContent = ""));
   },
   isDraw: function () {
     for (let row of this.gameboard) {
@@ -150,16 +201,10 @@ const Gameboard = {
     return true;
   },
   gameOver: false,
-};
-
-const playerOne = {
-  name: "Player 1",
-  marker: "X",
-};
-
-const playerTwo = {
-  name: "Player 2",
-  marker: "O",
+  players: {
+    one: playerOne,
+    two: playerTwo
+  },
 };
 
 // Gameboard.placeMarkerPlayerTwo(1, 0);
