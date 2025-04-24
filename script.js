@@ -190,7 +190,6 @@ const Gameboard = {
     this.turn = 1;
     console.log("\nBoard reset.");
     this.displayGameboard();
-    // squares.forEach((square) => (square.textContent = ""));
   },
   isDraw: function () {
     for (let row of this.gameboard) {
